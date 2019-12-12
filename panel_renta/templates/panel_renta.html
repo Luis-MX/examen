@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+   Lista de pelicula
+{% endblock titulo %}
+
+{% block contenido %}
+    <form method="post" class="form">
+        {% csrf_token %}
+        <table class="table">
+            <tr class="row">
+                <th class="col">Titulo</th>
+                <th class="col">Stock</th>
+                <th class="col">Rentar</th>
+            </tr>
+            {% for pelicula in peliculas %}
+                <tr class="row">
+                    <td class="col">{{pelicula.titulo}}</td>
+                    <td class="col">{{pelicula.stock}}</td>
+                    <td class="col">
+                        <div class="form-group form-check">
+                            <input class="form-check-input" type="checkbox" name="{{pelicula.id}}" id="{{pelicula.id}}">
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Rentar</button>
+    </form>
+{% endblock contenido %}
