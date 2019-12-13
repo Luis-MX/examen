@@ -1,4 +1,4 @@
-from .models import Pelicula, DetalleRenta
+from .models import Pelicula
 from django.forms import ModelForm,Textarea, TextInput, NumberInput, Select
 
 

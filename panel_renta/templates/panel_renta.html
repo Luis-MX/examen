@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-   Lista de pelicula
+   Lista de peliculas
 {% endblock titulo %}
 
 {% block contenido %}
@@ -16,7 +16,7 @@
             {% for pelicula in peliculas %}
                 <tr class="row">
                     <td class="col">{{pelicula.titulo}}</td>
-                    <td class="col">{{pelicula.stock}}</td>
+                    <td class="col"><strong id="_{{pelicula.id}}">{{pelicula.stock}}</strong></td>
                     <td class="col">
                         <div class="form-group form-check">
                             <input class="form-check-input" type="checkbox" name="{{pelicula.id}}" id="{{pelicula.id}}">
@@ -25,6 +25,11 @@
                 </tr>
             {% endfor %}
         </table>
-        <button type="submit" class="btn btn-primary">Rentar</button>
+        {% if error %}
+            <div id="mensaje_error" class="alert alert-danger" role="alert">
+                <p>{{error_message}}</p>
+            </div>
+        {% endif %}
+        <button id="rentar" type="submit" class="btn btn-primary">Rentar</button>
     </form>
 {% endblock contenido %}
