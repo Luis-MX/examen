@@ -1,12 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxLengthValidator, MaxValueValidator, MinValueValidator, RegexValidator
+
+regexCaracter = RegexValidator(
+    r"^[A-Za-z ]+$", 'Solo letras')
+
 
 class Pelicula(models.Model):
-    titulo = models.TextField(verbose_name='titulo', name='titulo', unique=True, db_column='titulo', max_length=50)
+    titulo = models.TextField(verbose_name='titulo', name='titulo', unique=True, db_column='titulo', max_length=50, validators=[
+            MaxLengthValidator(50, 'Error en la longitud'), regexCaracter])
     genero = models.TextField(verbose_name='genero', name='genero', db_column='genero', max_length=50)
     duracion = models.IntegerField(verbose_name='duracion', name='duracion', db_column='duracion')
     descripcion = models.TextField(verbose_name='descripcion', name='descripcion', db_column='descripcion', max_length=500)
-    stock = models.IntegerField(verbose_name='stock', name='stock', db_column='stock')
+    stock = models.IntegerField(verbose_name='stock', name='stock', db_column='stock', validators=[MinValueValidator(0,message='Ya no hay peliculas')])
 
     def __str__(self):
         return self.titulo + ' - ' + str(self.duracion) + ' duracion'

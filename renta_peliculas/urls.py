@@ -22,5 +22,5 @@ from panel_renta.views import panel_renta
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('renta_pelicula', panel_renta, name='renta'),
+    url('renta_peliculas', panel_renta, name='renta'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

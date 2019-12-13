@@ -8,7 +8,7 @@ Característica: Panel de renta de pelicula
         Cuando cuando me dirijo a la pagina "renta_peliculas"
         Entonces puedo ver el listado de peliculas y su stock
 
-    Escenario: Rentar una o varias peliculas disponibles
+    Escenario: No selecciona niguna pelicula
         Dado que no he seleccionado peliculas
         Cuando presiono el boton rentar
         Entonces se muestra el mensaje "No se han seleccionado peliculas a rentar".
